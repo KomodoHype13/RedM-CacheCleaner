@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        // Import Win32 APIs
+        //Import Win32 APIs to smoothen screen grab
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
-            // Attach to your drag handle (e.g., panelDrag)
+            //Attachment to drag handle (panelDrag)
             panel1.MouseDown += PanelDrag_MouseDown;
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string customPath = System.IO.Path.Combine(appDataPath, "RedM");
@@ -69,7 +69,7 @@ namespace WindowsFormsApp1
                 string folderPath = diag.SelectedPath;
                 this.textBox1.Text = folderPath;
             }
-            //make an error for selecting the wrong file
+           
             
         }
 
@@ -85,6 +85,7 @@ namespace WindowsFormsApp1
 
         private void LaunchButton_Click(object sender, EventArgs e)
         {
+            //Modify to restore the last used path
             string exePath = this.textBox1.Text + "\\RedM.exe";
             //MessageBox.Show("Selected exe path: " + exePath); test
             try
@@ -106,7 +107,7 @@ namespace WindowsFormsApp1
             string cacheServer = this.textBox1.Text + "\\RedM.app\\data\\server-cache";
             string cacheServerPriv = this.textBox1.Text + "\\RedM.app\\data\\server-cache-priv";
 
-            try // delete the directory (folders) and start then close this app
+            try //Delete the directory (folders) and start then close this app
             {
 
                 Directory.Delete(cacheGeneral, true); // delete cache 1
