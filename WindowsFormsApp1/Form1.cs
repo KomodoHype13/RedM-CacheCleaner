@@ -28,12 +28,23 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
 
-            //Attachment to drag handle (panelDrag)
+            // Attachment to drag handle (panelDrag)
             panel1.MouseDown += PanelDrag_MouseDown;
-            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string customPath = System.IO.Path.Combine(appDataPath, "RedM");
-            this.textBox1.Text= customPath;
 
+            // Load the saved path if it exists
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.LastSelectedPath))
+            {
+                this.textBox1.Text = Properties.Settings.Default.LastSelectedPath;
+            }
+            else
+            {
+                string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                string customPath = Path.Combine(appDataPath, "RedM");
+                this.textBox1.Text = customPath;
+            }
+
+            // Attach FormClosing event
+            this.FormClosing += Form1_FormClosing;
         }
         private void PanelDrag_MouseDown(object sender, MouseEventArgs e)
         {
@@ -58,21 +69,29 @@ namespace WindowsFormsApp1
         {
             //grab local app data
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string customPath = System.IO.Path.Combine(appDataPath, "RedM");
+            string customPath = Path.Combine(appDataPath, "RedM");
 
             //create folder dialog
             FolderBrowserDialog diag = new FolderBrowserDialog();
             diag.SelectedPath = customPath; //set the pre folder to the redM location
 
-            if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK) //open diag and set the text
+            if (diag.ShowDialog() == DialogResult.OK) //open diag and set the text
             {
                 string folderPath = diag.SelectedPath;
                 this.textBox1.Text = folderPath;
+
+                // Save the selected path
+                Properties.Settings.Default.LastSelectedPath = folderPath;
+                Properties.Settings.Default.Save();
             }
-           
-            
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Save the current path when the form is closing
+            Properties.Settings.Default.LastSelectedPath = textBox1.Text;
+            Properties.Settings.Default.Save();
+        }
         private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
         {
 
