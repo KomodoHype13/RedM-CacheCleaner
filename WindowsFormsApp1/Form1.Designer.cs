@@ -39,11 +39,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // LaunchButton
             // 
-            this.LaunchButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.LaunchButton.BackColor = System.Drawing.SystemColors.ControlDark;
             this.LaunchButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.LaunchButton.FlatAppearance.BorderSize = 2;
             this.LaunchButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
@@ -51,7 +52,7 @@
             this.LaunchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LaunchButton.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LaunchButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LaunchButton.Location = new System.Drawing.Point(442, 332);
+            this.LaunchButton.Location = new System.Drawing.Point(351, 185);
             this.LaunchButton.Name = "LaunchButton";
             this.LaunchButton.Size = new System.Drawing.Size(134, 63);
             this.LaunchButton.TabIndex = 1;
@@ -61,7 +62,7 @@
             // 
             // fileButton
             // 
-            this.fileButton.Location = new System.Drawing.Point(589, 245);
+            this.fileButton.Location = new System.Drawing.Point(503, 142);
             this.fileButton.Name = "fileButton";
             this.fileButton.Size = new System.Drawing.Size(44, 20);
             this.fileButton.TabIndex = 2;
@@ -76,7 +77,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(192, 245);
+            this.textBox1.Location = new System.Drawing.Point(101, 142);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(384, 20);
             this.textBox1.TabIndex = 4;
@@ -84,11 +85,11 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(192, 196);
+            this.label1.Location = new System.Drawing.Point(139, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(384, 46);
+            this.label1.Size = new System.Drawing.Size(295, 40);
             this.label1.TabIndex = 5;
             this.label1.Text = "Select RedM Folder Location";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -100,13 +101,13 @@
             // 
             // cacheButton
             // 
-            this.cacheButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cacheButton.BackColor = System.Drawing.SystemColors.ControlDark;
             this.cacheButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.cacheButton.FlatAppearance.BorderSize = 2;
             this.cacheButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cacheButton.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cacheButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.cacheButton.Location = new System.Drawing.Point(192, 332);
+            this.cacheButton.Location = new System.Drawing.Point(98, 187);
             this.cacheButton.Name = "cacheButton";
             this.cacheButton.Size = new System.Drawing.Size(132, 63);
             this.cacheButton.TabIndex = 7;
@@ -118,7 +119,7 @@
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(758, 9);
+            this.label2.Location = new System.Drawing.Point(533, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 34);
             this.label2.TabIndex = 8;
@@ -129,10 +130,16 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.LaunchButton);
+            this.panel1.Controls.Add(this.cacheButton);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.fileButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 326);
+            this.panel1.Size = new System.Drawing.Size(575, 294);
             this.panel1.TabIndex = 9;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelDrag_MouseDown);
@@ -143,21 +150,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = global::WindowsFormsApp1.Properties.Resources.redm;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cacheButton);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.fileButton);
-            this.Controls.Add(this.LaunchButton);
+            this.ClientSize = new System.Drawing.Size(575, 260);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RedM Cache Cleaner";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
