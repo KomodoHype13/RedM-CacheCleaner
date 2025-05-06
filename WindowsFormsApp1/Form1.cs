@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Drawing.Drawing2D;
 
 namespace WindowsFormsApp1
 {
@@ -27,7 +28,8 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-
+            this.DoubleBuffered = true; // Prevent flickering
+            this.Paint += MainForm_Paint;
             // Attachment to drag handle (panelDrag)
             panel1.MouseDown += PanelDrag_MouseDown;
 
@@ -52,7 +54,18 @@ namespace WindowsFormsApp1
             SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
         }
 
-
+        private void MainForm_Paint(object sender, PaintEventArgs e)
+        {
+            // Create gradient from dark gray to redM red
+            using (var gradientBrush = new LinearGradientBrush(
+                this.ClientRectangle,
+                Color.FromArgb(40, 40, 40),   // Dark gray
+                Color.FromArgb(245, 0, 0),      // RedM red
+                LinearGradientMode.ForwardDiagonal))
+            {
+                e.Graphics.FillRectangle(gradientBrush, this.ClientRectangle);
+            }
+        }
 
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -149,6 +162,16 @@ namespace WindowsFormsApp1
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
         {
 
         }
