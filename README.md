@@ -11,3 +11,19 @@ This app streamlines your RedM gaming experience by offering a hassle-free solut
 - **Safety First**: Targets only unnecessary cache files, safeguarding your game saves, settings, and critical system data from accidental deletion.  
 
 Whether you're troubleshooting issues or optimizing performance, this app keeps your gaming experience smooth, fast, and frustration-free. 🚀  
+
+## 🚀 Quick Start & How to use
+
+Navigate to releases (link) and download RedMCleaner.zip
+Unzip the folder to your desktop or anywhere you wish
+Move the shortcut your desktop for your convinience
+Run the Shortcut .exe
+
+## 🤝 Contributing
+
+### Clone the repo
+
+```bash
+git clone https://github.com/KomodoHype13/RedM-CacheCleaner
+cd RedM-CacheCleaner
+```
